@@ -31,7 +31,7 @@
                     <label for="project-description" class="form-label">Description:</label>
                     <textarea id="project-description" class="form-control" name="description" rows="5" placeholder="Description">{{ old('description', $project->description) }}</textarea>
                     <div class="my-3">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">@yield('form-submit')</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                 </form>

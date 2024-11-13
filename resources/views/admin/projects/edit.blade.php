@@ -8,3 +8,5 @@
 @section('form-method')
     @method('put')
 @endsection
+
+@section('form-submit', 'Update')

@@ -8,3 +8,5 @@
 @section('form-method')
     @method('post')
 @endsection
+
+@section('form-submit', 'Create')
