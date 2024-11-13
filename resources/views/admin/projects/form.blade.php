@@ -18,7 +18,7 @@
                     <label for="project-name" class="form-label">Name:</label>
                     <input type="text" id="project-name" class="form-control" name="name" value="{{ old('name', $project->name) }}" placeholder="Name">
                     {{-- @error('name')
-                        <div class="alert alert-warning" role="alert">{{ $error }}</div>
+                        @include('partials.error')
                     @enderror --}}
                     <!-- Project Type -->
                     <label for="project-type" class="form-label">Type:</label>
