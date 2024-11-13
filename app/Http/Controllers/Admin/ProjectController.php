@@ -25,7 +25,9 @@ class ProjectController extends Controller {
     public function store(StoreProjectRequest $request) {
         $data_list = $request->validated();
         $project = Project::create($data_list);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with('status', 'Created!')
+            ->with('alert-class', 'success');
     }
 
     // Index
@@ -49,7 +51,9 @@ class ProjectController extends Controller {
     public function update(UpdateProjectRequest $request, Project $project) {
         $data_list = $request->validated();
         $project->update($data_list);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with('status', 'Updated!')
+            ->with('alert-class', 'primary');
     }
 
     // Delete

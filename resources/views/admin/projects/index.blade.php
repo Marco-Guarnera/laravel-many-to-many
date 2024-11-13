@@ -4,6 +4,8 @@
 @section('main')
     <div class="container-fluid">
         <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-3">Create</a>
+        <!-- Session Data -->
+        @include('partials.session-data')
         <!-- Table -->
         <table class="table table-hover">
             <thead>
