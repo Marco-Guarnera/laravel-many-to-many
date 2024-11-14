@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-3">
                 <!-- Form -->
-                <form action="@yield('form-action')" method="post">
+                <form action="@yield('form-action')" method="post" enctype="multipart/form-data">
                     @yield('form-method')
                     @csrf
                     <!-- Project Name -->
@@ -30,6 +30,9 @@
                     <!-- Project Description -->
                     <label for="project-description" class="form-label">Description:</label>
                     <textarea id="project-description" class="form-control" name="description" rows="5" placeholder="Description">{{ old('description', $project->description) }}</textarea>
+                    <!-- Project Img -->
+                    <label for="project-img" class="form-label">Image:</label>
+                    <input type="file" id="project-img" class="form-control" name="img">
                     <div class="my-3">
                         <button type="submit" class="btn btn-primary">@yield('form-submit')</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
