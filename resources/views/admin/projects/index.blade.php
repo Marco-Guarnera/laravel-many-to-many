@@ -14,6 +14,7 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Description</th>
+                    <th>Technologies</th>
                     <th>Functions</th>
                 </tr>
             </thead>
@@ -24,6 +25,13 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->type->name }}</td>
                         <td>{{ substr($project->description, 0, 125) . '...' }}</td>
+                        <td>
+                            @forelse ($project->technologies as $technology)
+                                {{ $technology->name }}
+                            @empty
+                                <div>Not Available</div>
+                            @endforelse
+                        </td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success">Show</a>
                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">Edit</a>
