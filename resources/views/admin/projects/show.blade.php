@@ -11,6 +11,7 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Description</th>
+                    <th>Technologies</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,13 @@
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->type->name }}</td>
                     <td>{{ $project->description }}</td>
+                    <td>
+                        @forelse ($project->technologies as $technology)
+                            {{ $technology->name }}
+                        @empty
+                            <div>Not Available</div>
+                        @endforelse
+                    </td>
                 </tr>
             </tbody>
         </table>
