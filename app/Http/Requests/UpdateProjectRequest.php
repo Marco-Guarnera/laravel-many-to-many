@@ -23,7 +23,8 @@ class UpdateProjectRequest extends FormRequest {
         return [
             'name' => ['required', 'string', 'min:1', 'max:250', Rule::unique('projects')->ignore($this->project)],
             'type_id' => ['required', 'numeric', 'integer', 'exists:types,id'],
-            'description' => ['string', 'min:1', 'max:500']
+            'description' => ['nullable', 'string', 'min:1', 'max:500'],
+            'img' => ['nullable', 'image', 'max:256']
         ];
     }
 }
