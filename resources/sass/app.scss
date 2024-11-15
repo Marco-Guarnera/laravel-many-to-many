@@ -11,3 +11,8 @@
 form :where(input, select, textarea) {
     margin-bottom: 0.25rem;
 }
+
+img {
+    display: block;
+    height: 125px;
+}
