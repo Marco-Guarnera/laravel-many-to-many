@@ -14,5 +14,5 @@ form :where(input, select, textarea) {
 
 img {
     display: block;
-    height: 125px;
+    max-width: 125px;
 }
