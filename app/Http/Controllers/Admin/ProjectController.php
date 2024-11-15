@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller {
     public function __construct() {
@@ -24,7 +25,14 @@ class ProjectController extends Controller {
     // Store
     public function store(StoreProjectRequest $request) {
         $data_list = $request->validated();
+
+        if ($request->hasFile('img')) {
+            $file_path = Storage::disk('public')->put('/img/projects/', $request->img);
+            $data_list['img'] = $file_path;
+        }
+
         $project = Project::create($data_list);
+
         return redirect()->route('admin.projects.index')
             ->with('status', 'Created!')
             ->with('alert-class', 'success');
@@ -50,7 +58,15 @@ class ProjectController extends Controller {
     // Update
     public function update(UpdateProjectRequest $request, Project $project) {
         $data_list = $request->validated();
+
+        if ($request->hasFile('img')) {
+            if ($project->img) Storage::disk('public')->delete($project->img);
+            $file_path = Storage::disk('public')->put('/img/projects/', $request->img);
+            $data_list['img'] = $file_path;
+        }
+
         $project->update($data_list);
+
         return redirect()->route('admin.projects.index')
             ->with('status', 'Updated!')
             ->with('alert-class', 'primary');
